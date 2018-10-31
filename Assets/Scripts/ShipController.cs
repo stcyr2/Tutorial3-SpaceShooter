@@ -10,6 +10,7 @@ public class Boundary
 public class ShipController : MonoBehaviour
 {
     private Rigidbody rb;
+    private AudioSource audio;
     public float speed;
     public Boundary boundary;
     public float tilt;
@@ -23,6 +24,7 @@ public class ShipController : MonoBehaviour
     void Start ()
     {
         rb = GetComponent<Rigidbody>();
+        audio = GetComponent<AudioSource>();
     }
 
     void Update ()
@@ -31,6 +33,7 @@ public class ShipController : MonoBehaviour
         {
             nextFire = Time.time + fireRate;
             Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+            audio.Play();
         }
     }
 
