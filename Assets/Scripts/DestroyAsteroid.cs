@@ -6,21 +6,21 @@ public class DestroyAsteroid : MonoBehaviour
 {
     public GameObject explosion;
     public GameObject playerExplosion;
-   // public int scoreValue;
-   //private GameController gameController;
+    public int scoreValue;
+    private Controller gameController;
 
-   /* void Start ()
+   void Start ()
     {
         GameObject gameControllerObject = GameObject.FindWithTag("GameController");
         if (gameControllerObject != null)
         {
-            gameController = gameControllerObject.GetComponent<gameController>();
+            gameController = gameControllerObject.GetComponent<Controller>();
         }
         if (gameController == null)
         {
-            Debug.Log("Cannot find 'GameController' script");
+            Debug.Log("Cannot find 'Controller' script");
         }
-    } */
+    } 
 
     void OnTriggerEnter(Collider other)
     {
@@ -34,7 +34,7 @@ public class DestroyAsteroid : MonoBehaviour
             Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
         }
 
-       // gameController.AddScore(scoreValue);
+        gameController.AddScore(scoreValue);
         Destroy(other.gameObject);
         Destroy(gameObject);
     }
